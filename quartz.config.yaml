@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: obsidian-blog.pages.dev
+  baseUrl: karlos2004-obsidian-blog.pages.dev
   ignorePatterns:
     - private
     - templates
