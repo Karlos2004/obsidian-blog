@@ -34,6 +34,13 @@ try {
     Set-Location -LiteralPath $repoRoot
     $env:GIT_TERMINAL_PROMPT = '0'
 
+    # Trust only this repository for Git commands launched by this process.
+    # This avoids ownership-check differences between interactive PowerShell
+    # and applications such as AutoHotkey without changing global Git config.
+    $env:GIT_CONFIG_COUNT = '1'
+    $env:GIT_CONFIG_KEY_0 = 'safe.directory'
+    $env:GIT_CONFIG_VALUE_0 = $repoRoot.Replace('\', '/')
+
     if (-not (Test-Path -LiteralPath '.git' -PathType Container)) {
         throw 'Quartz Git repository was not found.'
     }
